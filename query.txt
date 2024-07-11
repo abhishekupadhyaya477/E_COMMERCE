@@ -1,0 +1,2 @@
+
+INSERT INTO `first_crud_local`.`product_list` (`product_id`, `product_name`, `product_desc`, `product_mrp`, `product_offer_price`, `created_by`, `delete_flag`) VALUES ('2', 'Samsung S24', 'It\'s another phone', '80000', '60000', 'Abhishek', 'N');
