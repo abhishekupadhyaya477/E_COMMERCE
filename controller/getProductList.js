@@ -1,7 +1,7 @@
 const {con}=require('../model/db')
 async function getProductList(req,res){
     try {
-     con.query('SELECT * FROM product_list',(err,resolve)=>{
+     con.query(`SELECT * FROM product_list WHERE delete_flag='N'`,(err,resolve)=>{
           if(err){
             console.log(err);
             return res.status(err.code).send({message:err.message })
