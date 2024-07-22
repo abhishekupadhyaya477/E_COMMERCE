@@ -1,9 +1,22 @@
 const {con}=require('../model/db')
+const Joi = require('joi');
 async function updateProductList(req,res){
     try {
         let {product_name,product_desc,product_id,product_mrp,product_offer_price,delete_flag}=req.body
         let query=''
         let data=''
+        const schema=Joi.object({
+            product_name:Joi.string().required(),
+            product_desc:Joi.string().required(),
+            product_mrp:Joi.number().required(),
+            product_offer_price:Joi.number().required(),
+            product_id:Joi.number().required(),
+            delete_flag:Joi.string(),
+        })
+        const result=schema.validate(req.body)
+        if(result.error){
+            return res.status(400).send({'message':result.error.message })
+        }
         if(product_id!=0){
             if(delete_flag!='Y'){
                 query=`Update product_list set product_name=?,product_desc=?,product_mrp=?,product_offer_price=? where product_id=? `;

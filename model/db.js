@@ -1,7 +1,7 @@
 const mysql=require('mysql2')
 let con=mysql.createConnection({
     host:"localhost",
-    user:"localDB",
+    user:"abhi",
     password:"root",
     database:'first_crud_local',
 })
